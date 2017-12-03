@@ -53,10 +53,10 @@ void CAimBot::Trigger(struct usercmd_s *cmd)
 				dwTemporaryBlockTimer = GetTickCount();
 			}
 		}
-	}
 
-	if (!TriggerKeyStatus)
-		return;
+		if (!TriggerKeyStatus)
+			return;
+	}
 
 	if (!IsCurWeaponGun() || !CanAttack())
 		return;
@@ -345,8 +345,8 @@ void CAimBot::LegitAimbot(struct usercmd_s *cmd)
 
 		QNewAngles.Normalize();
 
-		if (cmd->buttons & IN_ATTACK && CanAttack())
-			g_NoSpread.GetSpreadOffset(g_Local.weapon.random_seed, 1, QNewAngles, QNewAngles);
+		/*if (cmd->buttons & IN_ATTACK && CanAttack())
+			g_NoSpread.GetSpreadOffset(g_Local.weapon.random_seed, 1, QNewAngles, QNewAngles);*/
 
 		if (flSpeedScaleFov > 0 && flSpeedScaleFov <= 100 && g_Local.vPunchangle.IsZero() && !isnan(g_PlayerExtraInfoList[iTarget].fHitboxFOV[iHitbox]))
 			flSpeed = flSpeed - (((g_PlayerExtraInfoList[iTarget].fHitboxFOV[iHitbox] * (flSpeed / m_flCurrentFOV)) * flSpeedScaleFov) / 100);//speed - (((fov * (speed / 180)) * scale) / 100)
